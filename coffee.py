@@ -23,5 +23,10 @@ def calc_view():
     return flask.render_template('index.html', spoons=spoons)
 
 
+@app.route('/cups/12/')
+def redirect_to_new():
+    return flask.redirect('/cups/')
+
+
 if __name__ == "__main__":
     app.run()
