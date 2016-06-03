@@ -6,12 +6,20 @@ app = flask.Flask(__name__)
 
 @app.route('/')
 def home():
-    return '418'
+    response = flask.jsonify({'status_code': '418',
+                              'reason': "I'm a teapot"})
+    response.status_code = 418
+    return response
 
 
-@app.route('/cups/<int:number_of_cups>/')
-def calc_view(number_of_cups):
-    spoons = calculator.get_amount_of_coffee_spoons(number_of_cups)
+@app.route('/cups/')
+def calc_view():
+    number = flask.request.args.get('number', None)
+    number = float(number) if number else None
+
+    spoons = calculator.get_amount_of_coffee_spoons(number) \
+        if number is not None else None
+
     return flask.render_template('index.html', spoons=spoons)
 
 

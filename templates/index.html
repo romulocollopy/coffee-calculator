@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Awesome coffe calculator</title>
 </head>
 <body>
-    You should use {{ "%.2f" % spoons }} spoons. Trust me.
+    <h1>The Ultimate Boby Coffee Calculator alpha pre-release v0.1</h1>
+    {% if spoons == None %}
+    <form action="/cups/">
+        <p>
+            I'd like to make <input type="number" name="number"/> cups of coffee.
+        </p>
+        <p><button>Help me!</button></p>
+    </form>
+    {% else %}
+    <p>You should use {{ "%.2f" % spoons }} spoons. Trust me.<p>
+    <a href="/cups/">Nah, other number...</a>
+    {% endif %}
 </body>
 </html>
