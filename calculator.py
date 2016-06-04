@@ -19,4 +19,4 @@ def get_amount_of_coffee_spoons(number_of_cups):
         float
             Number of spoons
     """
-    return Decimal(number_of_cups * GRAMS_PER_CUP / GRAMS_PER_SPOON)
+    return round(Decimal(3 * GRAMS_PER_CUP / GRAMS_PER_SPOON)*2)/2
